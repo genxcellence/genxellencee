@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PDF Template Service Sample Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Retirement Planalyzer">
+    <meta name="author" content="American Funds">
+    <meta name="template-hash" content="f3142bbb0a1696d5caa932ecab0fc530">
+    <link rel="stylesheet" href="../static/fonts.css"/>
+    <link rel="stylesheet" href="../static/css/sample.css"/>
+</head>
+<body>
+<div>
+	<img src="../static/img/logo.png" height="132" width="207">
+	<div class="cls_003 date" style="position:absolute;left:847.89px;top:40.08px"><span class="cls_003">May 20, 2020</span></div>
+</div>
+<div id="cover">
+	<div id="container">
+	    <div id="absolute">
+	    	<div class="pdfHeading">
+	        	<h4>Preliminary Retirement Plan Fee Quote</h4>
+	        	<h2 th:text="${priceIt.clientName}">clientName</h2>
+	        </div>
+	        <div class="section">
+	            <p>&nbsp;</p>
+	             &nbsp;
+	              <p>&nbsp;</p>
+	               <p>&nbsp;</p> <p>&nbsp;</p>
+	                <p>&nbsp;</p>
+	                 <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p>
+	            <table width="100%">
+	                 <tr class="contact-info">
+	                    <td width="30%" valign="top">
+	                        Investments are not FDIC-insured, nor are <br>
+	                        they deposits of or guaranteed by a bank or <br>
+	                        any other entity, so they may lose value.
+	                        
+	                    </td>
+	                     <td width="50%" valign="top">&nbsp;</td>
+	                </tr>
+	            </table>
+	        </div>
+	        
+	    </div>
+	</div>
+</div>
+<div class="section secPPTPA">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Preliminary Retirement Plan Fee Quote</h3>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA
+	            </div>
+	            <div  width="100%" class="pptpaTable">
+	            	<div class="font-bold">Retirement Plan Share Class</div>
+	            	<div class="font-bold bgColorBlue">Annual Recordkeeping Fee<sup>4</sup></div>
+	            	<div class="">Gross Fee</div>
+	            	<div class="">Plan Credit  — As a % of Assets<sup>5,6</sup> </div>
+	            	<div class="">— Dollar Amount</div>
+	            	<div class="">Net Fee </div>
+	            	<div class="font-bold bgColorBlue">Annual Investment Cost</div>
+	            	<div class="font-bold">Average Expense Ratio <sup>7</sup></div>
+	            	<div class="">Dollar Amount</div>
+	            	<div class="font-bold bgColorBlue">Annual TPA Fee <sup>8</sup></div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="font-bold bgColorBlue">Annual Advisor Fee (Fee-based share classes) <sup>9</sup></div>
+	            	<div class="">As a % of Assets</div>
+	            	<div class="">Dollar Amount</div>
+	            	<div class="font-bold bgColorBlue">Wilshire Fiduciary Services</div>
+	            	<div class="">As a % of Assets</div>
+	            	<div class="">Dollar Amount</div>
+	            	<div class="font-bold bgColorBlue">Total Annual Costs<sup>10</sup> </div>
+	            	<div class="">As a % of Assets</div>
+	            	<div class="bottom_Border">Dollar Amount</div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="font-bold">For Reference:</div>
+	            	<div class="font-bold bgColorGray">One-Time Fee</div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="font-bold bgColorGray" style="display:Block;width: 200%;">Annual Advisor Compensation (Applies to commissionable share classes, included in expense ratios)11 </div>
+	            	<div class=""> Share-Class Rate<sup>12</sup></div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="">Adjusted Fee-Based Rate<sup>13</sup></div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="">Incremental Plan Credit (Included in plan credit above)<sup>14,15</sup> </div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="bottom_Border">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="pptpaTableData" th:each="priceitresult : ${priceitresultlist}">
+	            	<div class="font-bold" th:text="${priceitresult.shareClassType}">shareClassType</div>
+	            	<div class="bgColorBlue">&nbsp;</div>
+	            	<div class="" >$<span th:text="${priceitresult.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${priceitresult.planCreditPercent}">planCreditPercent</span>%</div>
+	            	<div class="" >($<span th:text="${priceitresult.planCredit}">planCredit</span>)</div>
+	            	<div class="" >$<span th:text="${priceitresult.netCredit}">$netCredit</span></div>
+	            	<div class="bgColorBlue">&nbsp;</div>
+	            	<div class=""  ><span th:text="${priceitresult.investAvgExpRatio}">investAvgExpRatio</span>%</div>
+	            	<div class="" >$<span  th:text="${priceitresult.investDollarCost}">$investDollarCost</span></div>
+	            	<div class="bgColorBlue">&nbsp;</div>
+	            	<div class="" >$<span  th:text="${priceitresult.annualTPAFee}">$annualTPAFee</span></div>
+	            	<div class="bgColorBlue">&nbsp;</div>
+	            	<div class="" ><span  th:text="${priceitresult.adviserFeePercent}">adviserFeePercent</span>%</div>
+	            	<div class="" >$<span  th:text="${priceitresult.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class="bgColorBlue">&nbsp;</div>
+	            	<div class="" ><span  th:text="${priceitresult.wilShireFeePercent}">wilShireFeePercent</span>%</div>
+	            	<div class="" >$<span  th:text="${priceitresult.wilShireFeeDollar}">wilShireFeeDollar</span></div>
+	            	<div class="font-bold bgColorBlue">&nbsp;</div>
+	            	<div class=""  ><span th:text="${priceitresult.planCostPct}">planCostPct</span>%</div>
+	            	<div class="bottom_Border" >$<span  th:text="${priceitresult.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="font-bold">$<span  th:text="${priceitresult.shareClassType}">shareClassType</span></div>
+	            	<div class="bgColorGray">&nbsp;</div>
+	            	<div class="" th:text="${priceitresult.oneTimeFee}"> oneTimeFee</div>
+	            	<div class="bgColorGray">&nbsp;</div>
+	            	
+	            	<div class="" ><span  th:text="${priceitresult.dealerCompPct}">dealerCompPct</span>%</div>
+	            	<div class="" >$<span  th:text="${priceitresult.dealerCompDollar}">dealerCompDollar</span></div>
+	            	
+	            	<div class="" ><span th:text="${priceitresult.feeBasedCompPct}">feeBasedCompPct</span>%</div>
+	            	<div class="" >$<span th:text="${priceitresult.feeBasedCompDollar}">feeBasedCompDollar</span></div>
+	            	<div class="" th:text="${priceitresult.creditAmountPct}">$ creditAmountPct</div>
+	            	<div class="" th:text="${priceitresult.creditAmountDollar}">$ creditAmountDollar</div>
+	            	<div class="">&nbsp;</div>
+	            	<div class="bottom_Border">&nbsp;</div>
+	            	
+	            	
+	            </div>
+	            
+	            
+	            
+	            
+	            
+	            
+	            
+	        </div>
+	        &nbsp;<br><br>
+	        <div style="clear: both;"></div>
+	        <div class="section sectionHeader">
+	        <p>This preliminary fee quote is based on information provided about the plan such as total plan assets and number of participants.
+	        </p>
+	        <ul class="num">
+	        <li> For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For plans with assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10 million or more. </li>
+	        <li> For PlanPremier-TPA plans with assets between $5 million and $10 million, the R-2E share class requires a minimum of 50 participants. For plans with assets between $10 million and $20 million, R-2E requires a minimum of 100 participants. For plans with assets between $20 million and $50 million, R-2E requires a minimum of 350 participants.For plans with assets between $50 million and $100 million, R-2E requires a minimum of 500 participants. </li>
+	        <li>For PlanPremier-TPA plans with assets between $5 million and $10 million, the R-3 share class requires a minimum of 50 participants. For plans with assets between $10 million and $20 million, R-3 requires a minimum of 100 participants. For plans with assets between $20 million and $50 million, R-3 requires a minimum of 350 participants. For plans with assets of $50 million or more, R-3 requires a minimum of 500 participants. </li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding and tax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li> The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05% for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on all plan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’s recordkeeping system. </li>
+	        <li> For PlanPremier, credit rates may vary depending on a plan's investment options.</li>
+	        <li> Average expense ratios are provided only as examples. The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflect applicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share class is for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight is given to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to 4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5; 0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details.</li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amount may vary if the TPA charges in basis points. </li>
+	        <li> The plan’s financial professional charges separately for services. </li>
+	        <li>Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are not included. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary services are available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3 (38) services. </li>
+	        <li>Annual advisor compensation is derived from investment option payments (e.g. 12b-1 fees) for share classes R-2 through R-4 and is included in the funds' expense ratios (see annual investment cost). </li>
+	        <li>The compensation available based on the investment option payments (e.g. 12b-1 fees) for the selected share class. </li>
+	        <li> For compensation recapture, fee-based advisors may enter an amount less than the share class rate.</li>
+	        <li>For PlanPremier, the difference between the share class rate and the adjusted fee-based rate, is added to the plan credit. </li>
+	        <li>For PlanPremier, reducing the compensation rate through recapture for share classes R-2 through R-4 will create an Incremental Plan Credit. For this illustration, this amount will increase your plan credit. In practice, the recaptured share class compensation will be directed to an unallocated plan account where it can be used to pay the plan's advisor, reasonable plan administration expenses, or allocated to participant accounts.
+	        </li>
+	        </ul>
+	        <p class="font-bold">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees.Investors should carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fund prospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. This information may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional.Securities offered through American Funds Distributors, Inc. </p>
+	        </div>
+	        &nbsp;<br><br>
+	    <div class="section secRPC">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Retirement Plan Cost Estimate Based on Assets </h3>
+	                    <p>PlanPremier-TPA®’s-annual credit can have a meaningful impact to the plan’s costs over time.</p>
+	                    <p>How the credit works: The mutual funds in the plan generate recordkeeping payments to help pay for the plan’s recordkeeping and administrationfees. These payments, along with a portion of the distribution/service fees paid by the funds, are used to reduce American Fund ’s recordkeepingfees through the plan credit. The plan credit is generally based on the amount of assets in the plan and varies by share class. If the recordkeepingfees exceed the amount of the plan credit, the plan will be invoiced for the difference. If the plan credit exceeds the recordkeeping fees, the plan willreceive a net credit. The chart below illustrates the potential savings generated by the credit.</p>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA <span th:utext="${priceIt.mr2}">Welcome to our grocery store!</span>
+	            </div>
+	            <div  width="100%" class="">
+	            	<span class="font-bold" width="50%">Current Plan Assets </span>
+	            	<span class="font-bold" width="50%">When Assets Increase </span>
+	            	
+	            </div>
+	            <div  width="100%" class="rpcTable">
+	            	<div class="font-bold bgColorBlue">Total Plan Assets:</div>
+	            	<div class="">Annual Recordkeeping Fee<sup>2</sup></div>
+	            	<div class="">Annual Plan Credit<sup>3,4</sup> </div>
+	            	<div class="">Annual Investment Cost<sup>5</sup></div>
+	            	<div class="">Annual TPA Fee<sup>6</sup></div>
+	            	<div class="">Annual Advisor Fee (From feebased share classes)</div>
+	            	<div class="">Wilshire Fiduciary Services</div>
+	            	<div class=""> Total Annual Costs<sup>7</sup> </div>
+	            	<div class=" ">Total Annual Costs as a % of Assets </div>
+	            	<div class="">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="rpcTableData" th:each="milestone : ${R2}">
+	            	<div class="bgColorBlue">$<span th:text="${milestone.totalPlanAsset}">totalPlanAsset</span></div>
+	            	<div class="" >$<span th:text="${milestone.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${milestone.planCredit}">planCredit</span>%</div>
+	            	<div class="" >($<span th:text="${milestone.investDollarCost}">investDollarCost</span>)</div>
+	            	<div class="" >$<span th:text="${milestone.annualTPAFee}">annualTPAFee</span></div>
+	            	<div class="">$<span th:text="${milestone.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class=""  ><span th:text="${milestone.wilShireFeeDollar}">wilShireFeeDollar</span>%</div>
+	            	<div class="" >$<span  th:text="${milestone.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">$<span th:text="${milestone.planCostPct}">planCostPct</span></div>
+	            		
+	            	<div class="">&nbsp;</div>	            	
+	            </div>
+	            &nbsp;<br><br>
+	             <div style="clear: both;"></div>
+	        <p class="">This chart is for illustration pu rposes only and is not intended to portray the results of a particular investment. Figures shown are based oninformation provided about the plan such as total plan assets and number of participants. (The number of participants is held constant.)</p>
+	    </div>
+	    &nbsp;<br><br>
+	    <div style="clear: both;"></div>
+	        <div class="section sectionHeader">
+	        <ul class="num">
+	        <li>For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For planswith assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10million or more.</li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding andtax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li>The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05%for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on allplan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’srecordkeeping system. </li>
+	        <li>  For PlanPremier, credit rates may vary depending on a plan's investment options. </li>
+	        <li> Advisor compensation is included in the funds’ expense ratios (see investment cost). Average expense ratios are provided only as examples.The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflectapplicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share classis for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight isgiven to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5;0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details. </li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amountmay vary if the TPA charges in basis points.</li>
+	        <li>  Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are notincluded. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary servicesare available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3(38) services.</li>
+	        </ul>
+	        <p class="">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees. Investorsshould carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fundprospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. Thisinformation may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional. Securities offeredthrough American Funds Distributors, Inc. </p>
+	        </div>
+	        &nbsp;<br><br>
+	    <div class="section secRPC">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Retirement Plan Cost Estimate Based on Assets </h3>
+	                    <p>PlanPremier-TPA®’s-annual credit can have a meaningful impact to the plan’s costs over time.</p>
+	                    <p>How the credit works: The mutual funds in the plan generate recordkeeping payments to help pay for the plan’s recordkeeping and administrationfees. These payments, along with a portion of the distribution/service fees paid by the funds, are used to reduce American Fund ’s recordkeepingfees through the plan credit. The plan credit is generally based on the amount of assets in the plan and varies by share class. If the recordkeepingfees exceed the amount of the plan credit, the plan will be invoiced for the difference. If the plan credit exceeds the recordkeeping fees, the plan willreceive a net credit. The chart below illustrates the potential savings generated by the credit.</p>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA <span th:utext="${priceIt.mr2e}">Welcome to our grocery store!</span>
+	            </div>
+	            <div  width="100%" class="">
+	            	<span class="font-bold" width="50%">Current Plan Assets </span>
+	            	<span class="font-bold" width="50%">When Assets Increase </span>
+	            	
+	            </div>
+	            <div  width="100%" class="rpcTable">
+	            	<div class="font-bold bgColorBlue">Total Plan Assets:</div>
+	            	<div class="">Annual Recordkeeping Fee<sup>2</sup></div>
+	            	<div class="">Annual Plan Credit<sup>3,4</sup> </div>
+	            	<div class="">Annual Investment Cost<sup>5</sup></div>
+	            	<div class="">Annual TPA Fee<sup>6</sup></div>
+	            	<div class="">Annual Advisor Fee (From feebased share classes)</div>
+	            	<div class="">Wilshire Fiduciary Services</div>
+	            	<div class=""> Total Annual Costs<sup>7</sup> </div>
+	            	<div class=" ">Total Annual Costs as a % of Assets </div>
+	            	<div class="">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="rpcTableData" th:each="milestone : ${R2E}">
+	            	<div class="bgColorBlue">$<span th:text="${milestone.totalPlanAsset}">totalPlanAsset</span></div>
+	            	<div class="" >$<span th:text="${milestone.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${milestone.planCredit}">planCredit</span>%</div>
+	            	<div class="" >($<span th:text="${milestone.investDollarCost}">investDollarCost</span>)</div>
+	            	<div class="" >$<span th:text="${milestone.annualTPAFee}">annualTPAFee</span></div>
+	            	<div class="">$<span th:text="${milestone.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class=""  ><span th:text="${milestone.wilShireFeeDollar}">wilShireFeeDollar</span>%</div>
+	            	<div class="" >$<span  th:text="${milestone.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">$<span th:text="${milestone.planCostPct}">planCostPct</span></div>
+	            		
+	            	<div class="">&nbsp;</div>	            	
+	            </div>
+	           &nbsp;<br><br>
+	             <div style="clear: both;"></div>
+	        <p class="">This chart is for illustration pu rposes only and is not intended to portray the results of a particular investment. Figures shown are based oninformation provided about the plan such as total plan assets and number of participants. (The number of participants is held constant.)</p>
+	    </div>
+	    &nbsp;<br><br>
+	    <div style="clear: both;"></div>
+	    <div class="section sectionHeader">
+	        <ul class="num">
+	        <li>For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For planswith assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10million or more.</li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding andtax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li>The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05%for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on allplan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’srecordkeeping system. </li>
+	        <li>  For PlanPremier, credit rates may vary depending on a plan's investment options. </li>
+	        <li> Advisor compensation is included in the funds’ expense ratios (see investment cost). Average expense ratios are provided only as examples.The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflectapplicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share classis for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight isgiven to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5;0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details. </li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amountmay vary if the TPA charges in basis points.</li>
+	        <li>  Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are notincluded. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary servicesare available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3(38) services.</li>
+	        </ul>
+	        <p class="">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees. Investorsshould carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fundprospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. Thisinformation may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional. Securities offeredthrough American Funds Distributors, Inc. </p>
+	        </div>
+	        &nbsp;<br><br>
+	        <div class="section secRPC">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Retirement Plan Cost Estimate Based on Assets </h3>
+	                    <p>PlanPremier-TPA®’s-annual credit can have a meaningful impact to the plan’s costs over time.</p>
+	                    <p>How the credit works: The mutual funds in the plan generate recordkeeping payments to help pay for the plan’s recordkeeping and administrationfees. These payments, along with a portion of the distribution/service fees paid by the funds, are used to reduce American Fund ’s recordkeepingfees through the plan credit. The plan credit is generally based on the amount of assets in the plan and varies by share class. If the recordkeepingfees exceed the amount of the plan credit, the plan will be invoiced for the difference. If the plan credit exceeds the recordkeeping fees, the plan willreceive a net credit. The chart below illustrates the potential savings generated by the credit.</p>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA <span th:utext="${priceIt.mr3}">Welcome to our grocery store!</span>
+	            </div>
+	            <div  width="100%" class="">
+	            	<span class="font-bold" width="50%">Current Plan Assets </span>
+	            	<span class="font-bold" width="50%">When Assets Increase </span>
+	            	
+	            </div>
+	            <div  width="100%" class="rpcTable">
+	            	<div class="font-bold bgColorBlue">Total Plan Assets:</div>
+	            	<div class="">Annual Recordkeeping Fee<sup>2</sup></div>
+	            	<div class="">Annual Plan Credit<sup>3,4</sup> </div>
+	            	<div class="">Annual Investment Cost<sup>5</sup></div>
+	            	<div class="">Annual TPA Fee<sup>6</sup></div>
+	            	<div class="">Annual Advisor Fee (From feebased share classes)</div>
+	            	<div class="">Wilshire Fiduciary Services</div>
+	            	<div class=""> Total Annual Costs<sup>7</sup> </div>
+	            	<div class=" ">Total Annual Costs as a % of Assets </div>
+	            	<div class="">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="rpcTableData" th:each="milestone : ${R3}">
+	            	<div class="bgColorBlue">$<span th:text="${milestone.totalPlanAsset}">totalPlanAsset</span></div>
+	            	<div class="" >$<span th:text="${milestone.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${milestone.planCredit}">planCredit</span>%</div>
+	            	<div class="" >($<span th:text="${milestone.investDollarCost}">investDollarCost</span>)</div>
+	            	<div class="" >$<span th:text="${milestone.annualTPAFee}">annualTPAFee</span></div>
+	            	<div class="">$<span th:text="${milestone.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class=""  ><span th:text="${milestone.wilShireFeeDollar}">wilShireFeeDollar</span>%</div>
+	            	<div class="" >$<span  th:text="${milestone.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">$<span th:text="${milestone.planCostPct}">planCostPct</span></div>
+	            		
+	            	<div class="">&nbsp;</div>	            	
+	            </div>
+	           &nbsp;<br><br>
+	             <div style="clear: both;"></div>
+	        <p class="">This chart is for illustration pu rposes only and is not intended to portray the results of a particular investment. Figures shown are based oninformation provided about the plan such as total plan assets and number of participants. (The number of participants is held constant.)</p>
+	    </div>
+	        &nbsp;<br><br>
+	    <div style="clear: both;"></div>
+	    <div class="section sectionHeader">
+	        <ul class="num">
+	        <li>For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For planswith assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10million or more.</li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding andtax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li>The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05%for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on allplan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’srecordkeeping system. </li>
+	        <li>  For PlanPremier, credit rates may vary depending on a plan's investment options. </li>
+	        <li> Advisor compensation is included in the funds’ expense ratios (see investment cost). Average expense ratios are provided only as examples.The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflectapplicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share classis for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight isgiven to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5;0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details. </li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amountmay vary if the TPA charges in basis points.</li>
+	        <li>  Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are notincluded. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary servicesare available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3(38) services.</li>
+	        </ul>
+	        <p class="">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees. Investorsshould carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fundprospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. Thisinformation may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional. Securities offeredthrough American Funds Distributors, Inc. </p>
+	        </div>
+	        &nbsp;<br><br>
+	        <div class="section secRPC">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Retirement Plan Cost Estimate Based on Assets </h3>
+	                    <p>PlanPremier-TPA®’s-annual credit can have a meaningful impact to the plan’s costs over time.</p>
+	                    <p>How the credit works: The mutual funds in the plan generate recordkeeping payments to help pay for the plan’s recordkeeping and administrationfees. These payments, along with a portion of the distribution/service fees paid by the funds, are used to reduce American Fund ’s recordkeepingfees through the plan credit. The plan credit is generally based on the amount of assets in the plan and varies by share class. If the recordkeepingfees exceed the amount of the plan credit, the plan will be invoiced for the difference. If the plan credit exceeds the recordkeeping fees, the plan willreceive a net credit. The chart below illustrates the potential savings generated by the credit.</p>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA <span th:utext="${priceIt.mr4}">Welcome to our grocery store!</span>
+	            </div>
+	            <div  width="100%" class="">
+	            	<span class="font-bold" width="50%">Current Plan Assets </span>
+	            	<span class="font-bold" width="50%">When Assets Increase </span>
+	            	
+	            </div>
+	            <div  width="100%" class="rpcTable">
+	            	<div class="font-bold bgColorBlue">Total Plan Assets:</div>
+	            	<div class="">Annual Recordkeeping Fee<sup>2</sup></div>
+	            	<div class="">Annual Plan Credit<sup>3,4</sup> </div>
+	            	<div class="">Annual Investment Cost<sup>5</sup></div>
+	            	<div class="">Annual TPA Fee<sup>6</sup></div>
+	            	<div class="">Annual Advisor Fee (From feebased share classes)</div>
+	            	<div class="">Wilshire Fiduciary Services</div>
+	            	<div class=""> Total Annual Costs<sup>7</sup> </div>
+	            	<div class=" ">Total Annual Costs as a % of Assets </div>
+	            	<div class="">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="rpcTableData" th:each="milestone : ${R4}">
+	            	<div class="bgColorBlue">$<span th:text="${milestone.totalPlanAsset}">totalPlanAsset</span></div>
+	            	<div class="" >$<span th:text="${milestone.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${milestone.planCredit}">planCredit</span>%</div>
+	            	<div class="" >($<span th:text="${milestone.investDollarCost}">investDollarCost</span>)</div>
+	            	<div class="" >$<span th:text="${milestone.annualTPAFee}">annualTPAFee</span></div>
+	            	<div class="">$<span th:text="${milestone.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class=""  ><span th:text="${milestone.wilShireFeeDollar}">wilShireFeeDollar</span>%</div>
+	            	<div class="" >$<span  th:text="${milestone.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">$<span th:text="${milestone.planCostPct}">planCostPct</span></div>
+	            		
+	            	<div class="">&nbsp;</div>	            	
+	            </div>
+	           &nbsp;<br><br>
+	             <div style="clear: both;"></div>
+	        <p class="">This chart is for illustration pu rposes only and is not intended to portray the results of a particular investment. Figures shown are based oninformation provided about the plan such as total plan assets and number of participants. (The number of participants is held constant.)</p>
+	    </div>
+	        &nbsp;<br><br>
+	    <div style="clear: both;"></div>
+	    <div class="section sectionHeader">
+	        <ul class="num">
+	        <li>For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For planswith assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10million or more.</li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding andtax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li>The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05%for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on allplan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’srecordkeeping system. </li>
+	        <li>  For PlanPremier, credit rates may vary depending on a plan's investment options. </li>
+	        <li> Advisor compensation is included in the funds’ expense ratios (see investment cost). Average expense ratios are provided only as examples.The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflectapplicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share classis for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight isgiven to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5;0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details. </li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amountmay vary if the TPA charges in basis points.</li>
+	        <li>  Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are notincluded. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary servicesare available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3(38) services.</li>
+	        </ul>
+	        <p class="">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees. Investorsshould carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fundprospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. Thisinformation may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional. Securities offeredthrough American Funds Distributors, Inc. </p>
+	        </div>
+	        &nbsp;<br><br><div class="section secRPC">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Retirement Plan Cost Estimate Based on Assets </h3>
+	                    <p>PlanPremier-TPA®’s-annual credit can have a meaningful impact to the plan’s costs over time.</p>
+	                    <p>How the credit works: The mutual funds in the plan generate recordkeeping payments to help pay for the plan’s recordkeeping and administrationfees. These payments, along with a portion of the distribution/service fees paid by the funds, are used to reduce American Fund ’s recordkeepingfees through the plan credit. The plan credit is generally based on the amount of assets in the plan and varies by share class. If the recordkeepingfees exceed the amount of the plan credit, the plan will be invoiced for the difference. If the plan credit exceeds the recordkeeping fees, the plan willreceive a net credit. The chart below illustrates the potential savings generated by the credit.</p>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA <span th:utext="${priceIt.mr5e}">Welcome to our grocery store!</span>
+	            </div>
+	            <div  width="100%" class="">
+	            	<span class="font-bold" width="50%">Current Plan Assets </span>
+	            	<span class="font-bold" width="50%">When Assets Increase </span>
+	            	
+	            </div>
+	            <div  width="100%" class="rpcTable">
+	            	<div class="font-bold bgColorBlue">Total Plan Assets:</div>
+	            	<div class="">Annual Recordkeeping Fee<sup>2</sup></div>
+	            	<div class="">Annual Plan Credit<sup>3,4</sup> </div>
+	            	<div class="">Annual Investment Cost<sup>5</sup></div>
+	            	<div class="">Annual TPA Fee<sup>6</sup></div>
+	            	<div class="">Annual Advisor Fee (From feebased share classes)</div>
+	            	<div class="">Wilshire Fiduciary Services</div>
+	            	<div class=""> Total Annual Costs<sup>7</sup> </div>
+	            	<div class=" ">Total Annual Costs as a % of Assets </div>
+	            	<div class="">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="rpcTableData" th:each="milestone : ${R5E}">
+	            	<div class="bgColorBlue">$<span th:text="${milestone.totalPlanAsset}">totalPlanAsset</span></div>
+	            	<div class="" >$<span th:text="${milestone.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${milestone.planCredit}">planCredit</span>%</div>
+	            	<div class="" >($<span th:text="${milestone.investDollarCost}">investDollarCost</span>)</div>
+	            	<div class="" >$<span th:text="${milestone.annualTPAFee}">annualTPAFee</span></div>
+	            	<div class="">$<span th:text="${milestone.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class=""  ><span th:text="${milestone.wilShireFeeDollar}">wilShireFeeDollar</span>%</div>
+	            	<div class="" >$<span  th:text="${milestone.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">$<span th:text="${milestone.planCostPct}">planCostPct</span></div>
+	            		
+	            	<div class="">&nbsp;</div>	            	
+	            </div>
+	           &nbsp;<br><br>
+	             <div style="clear: both;"></div>
+	        <p class="">This chart is for illustration pu rposes only and is not intended to portray the results of a particular investment. Figures shown are based oninformation provided about the plan such as total plan assets and number of participants. (The number of participants is held constant.)</p>
+	    </div>
+	        &nbsp;<br><br>
+	    <div style="clear: both;"></div>
+	    <div class="section sectionHeader">
+	        <ul class="num">
+	        <li>For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For planswith assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10million or more.</li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding andtax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li>The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05%for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on allplan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’srecordkeeping system. </li>
+	        <li>  For PlanPremier, credit rates may vary depending on a plan's investment options. </li>
+	        <li> Advisor compensation is included in the funds’ expense ratios (see investment cost). Average expense ratios are provided only as examples.The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflectapplicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share classis for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight isgiven to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5;0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details. </li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amountmay vary if the TPA charges in basis points.</li>
+	        <li>  Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are notincluded. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary servicesare available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3(38) services.</li>
+	        </ul>
+	        <p class="">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees. Investorsshould carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fundprospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. Thisinformation may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional. Securities offeredthrough American Funds Distributors, Inc. </p>
+	        </div>
+	        &nbsp;<br><br>
+	        <div class="section secRPC">
+	            
+	            <div width="100%" class="pageHeader">
+	                 <div class="contact-info">
+	                    <h3> Retirement Plan Cost Estimate Based on Assets </h3>
+	                    <p>PlanPremier-TPA®’s-annual credit can have a meaningful impact to the plan’s costs over time.</p>
+	                    <p>How the credit works: The mutual funds in the plan generate recordkeeping payments to help pay for the plan’s recordkeeping and administrationfees. These payments, along with a portion of the distribution/service fees paid by the funds, are used to reduce American Fund ’s recordkeepingfees through the plan credit. The plan credit is generally based on the amount of assets in the plan and varies by share class. If the recordkeepingfees exceed the amount of the plan credit, the plan will be invoiced for the difference. If the plan credit exceeds the recordkeeping fees, the plan willreceive a net credit. The chart below illustrates the potential savings generated by the credit.</p>
+	                     <div> Client Information </div>
+	                    <div>Plan Sponsor Name: <span th:text="${priceIt.clientName}">clientName</span></div>
+	                    <div>Total Plan Assets:  <span th:text="${priceIt.planAssets}">planAssets</span></div>
+	                       <div>Estimated Annual Contributions: <span th:text="${priceIt.estimatedAnnContributions}">estimatedAnnContributions</span></div>
+	                       <div>Number of Participants: <span th:text="${priceIt.numParticipants}">numParticipants</span></div>
+	                
+	                </div>
+	                &nbsp;<br><br>
+	                
+	                PlanPremier®-TPA <span th:utext="${priceIt.mr5}">Welcome to our grocery store!</span>
+	            </div>
+	            <div  width="100%" class="">
+	            	<span class="font-bold" width="50%">Current Plan Assets </span>
+	            	<span class="font-bold" width="50%">When Assets Increase </span>
+	            	
+	            </div>
+	            <div  width="100%" class="rpcTable">
+	            	<div class="font-bold bgColorBlue">Total Plan Assets:</div>
+	            	<div class="">Annual Recordkeeping Fee<sup>2</sup></div>
+	            	<div class="">Annual Plan Credit<sup>3,4</sup> </div>
+	            	<div class="">Annual Investment Cost<sup>5</sup></div>
+	            	<div class="">Annual TPA Fee<sup>6</sup></div>
+	            	<div class="">Annual Advisor Fee (From feebased share classes)</div>
+	            	<div class="">Wilshire Fiduciary Services</div>
+	            	<div class=""> Total Annual Costs<sup>7</sup> </div>
+	            	<div class=" ">Total Annual Costs as a % of Assets </div>
+	            	<div class="">&nbsp;</div>
+	            	
+	            </div>
+	            
+	            <div  width="100%" class="rpcTableData" th:each="milestone : ${R5}">
+	            	<div class="bgColorBlue">$<span th:text="${milestone.totalPlanAsset}">totalPlanAsset</span></div>
+	            	<div class="" >$<span th:text="${milestone.annualFee}">annualFee</span></div>
+	            	<div class="" ><span  th:text="${milestone.planCredit}">planCredit</span>%</div>
+	            	<div class="" >($<span th:text="${milestone.investDollarCost}">investDollarCost</span>)</div>
+	            	<div class="" >$<span th:text="${milestone.annualTPAFee}">annualTPAFee</span></div>
+	            	<div class="">$<span th:text="${milestone.adviserFeeDollar}">adviserFeeDollar</span></div>
+	            	<div class=""  ><span th:text="${milestone.wilShireFeeDollar}">wilShireFeeDollar</span>%</div>
+	            	<div class="" >$<span  th:text="${milestone.planCostDollar}">planCostDollar</span></div>
+	            	<div class="">$<span th:text="${milestone.planCostPct}">planCostPct</span></div>
+	            		
+	            	<div class="">&nbsp;</div>	            	
+	            </div>
+	           &nbsp;<br><br>
+	             <div style="clear: both;"></div>
+	        <p class="">This chart is for illustration pu rposes only and is not intended to portray the results of a particular investment. Figures shown are based oninformation provided about the plan such as total plan assets and number of participants. (The number of participants is held constant.)</p>
+	    </div>
+	        &nbsp;<br><br>
+	    <div style="clear: both;"></div>
+	    <div class="section sectionHeader">
+	        <ul class="num">
+	        <li>For PlanPremier-TPA plans with assets between $3 million and $5 million, the R-2 share class requires a minimum of 50 participants. For planswith assets between $5 million and $10 million, R-2 requires a minimum of 100 participants. R-2 is not available for plans with assets of $10million or more.</li>
+	        <li> The annual recordkeeping fee covers services such as daily valuation recordkeeping, contribution tracking and full-service withholding andtax reporting. The recordkeeping fee in this report is based on the number of participants entered. </li>
+	        <li>The plan credit amount is based on an approximate credit rate that is applied as follows: 0.40% for R-2, 0.25% for R-2E, 0.25% for R-3, 0.05%for R-4, 0.15% for R-5E, 0.05% for R-5 and 0.00% for R-6. The credit rate for non-American Funds may vary. Credits are applied quarterly on allplan assets except self-directed brokerage accounts and other investment options that are not reported on the service provider’srecordkeeping system. </li>
+	        <li>  For PlanPremier, credit rates may vary depending on a plan's investment options. </li>
+	        <li> Advisor compensation is included in the funds’ expense ratios (see investment cost). Average expense ratios are provided only as examples.The actual average expense ratio depends on the investments selected for the plan and participant allocations. Expense ratios reflectapplicable fee waivers and expense reimbursements, without which expenses would be higher.The average expense ratio for each share classis for all funded investments and is weighted, based on average daily net assets in the program as of 12/31/2018. Accordingly, more weight isgiven to funds with more assets. Actual expense ratios, as reported in each fund’s prospectus at the time of publication, range from 0.99% to4.30% for R-2; 0.50% to 2.35% for R-2E; 0.64% to 3.57% for R-3; 0.35% to 3.55% for R-4; 0.02% to 1.93% for R-5E; 0.02% to 2.29% for R-5;0.02% to 3.07% for R-6. Expense ratios for certain funds in some share classes are estimated. Please see fund prospectuses for details. </li>
+	        <li> The third-party administrator (TPA) charges separately for administration services. The fee included in this estimate is fixed. The actual amountmay vary if the TPA charges in basis points.</li>
+	        <li>  Total annual costs are estimated. Fees for services that are not required for all plans, such as trustee/custodial and fiduciary services, are notincluded. Trustee and 403(b) custodial services are provided by Capital Bank & Trust Company for an annual fee of $750. Fiduciary servicesare available through Wilshire Associates Incorporated for an annual fee of 0.02% of plan assets for 3(21) services or 0.05% of plan assets for 3(38) services.</li>
+	        </ul>
+	        <p class="">To simplify the preliminary fee quote, some fees are estimated, and other fees are not included, such as loan and distribution fees. Investorsshould carefully consider investment objectives, risks, charges and expenses. This and other important information is contained in the fundprospectuses and summary prospectuses, which can be obtained from a financial professional and should be read carefully before investing. Thisinformation may vary regarding group annuity investments and, if applicable, can be obtained from a financial professional. Securities offeredthrough American Funds Distributors, Inc. </p>
+	        </div>
+	        
+	        
+	        
+	        
+</body>
+</html>

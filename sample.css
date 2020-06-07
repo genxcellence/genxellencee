@@ -1,0 +1,211 @@
+@page { 
+	size: A4 landscape;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	font: 14px/20px "AvenirNextLTW01-Regular", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+html {
+    line-height: 1;
+    font-family: "Arial, sans-serif;
+}
+
+h1 {
+	font: 35px/48px "Avenir Next LT W01 Demi", Arial, sans-serif;
+}
+
+h3 {
+    font: 26px/28px "AvenirNextLTW01-Regular", Arial, sans-serif;
+}
+h4 {
+	font: 20px/22px "Avenir Next LT W01 Demi", Arial, sans-serif;
+	color: #80bceb;
+}
+h2 {
+	font: 35px/48px "Avenir Next LT W01 Demi", Arial, sans-serif;
+}
+
+a img {
+    border: none;
+}
+
+b,
+strong {
+	font-family: "Avenir Next LT W01 Demi", Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+p
+{
+	font-size: 12px;
+	color:#000;
+    font-family: Arial, sans-serif;
+}
+.hedge p {
+    font-size: 10px;
+    font-family: "AvenirNextLTW01-Condens 721299", Arial, sans-serif;
+}
+
+#container {
+    margin: 0 auto;
+    padding: 0;
+  
+}
+
+#cover #absolute {
+    width: 95%;
+   padding: 20px;
+}
+
+#cover .section, .section {
+	padding: 24px 42px;
+	margin-bottom: 24px;
+}
+
+#cover h1 {
+	display: block;
+	padding: 30px;
+	background-color: #005F9E;
+	color: #fff;
+}
+
+#cover table {
+	
+	border-bottom: 2px solid #000;
+}
+
+#cover tr:first-child td {
+	padding-top: 12px;
+}
+
+#cover tr:last-child td:first-child {
+	border-top: 2px solid #000;
+	padding-bottom: 12px;
+}
+
+#cover td {
+	 font-size: 12px;
+	 vertical-align: top;
+}
+
+#cover ul > li {
+    font-family: "Avenir Next LT W01 Demi", Arial, sans-serif;
+    margin-top: 3px;
+}
+
+
+.date{
+	position: absolute;
+    right: 50px;
+    top: 40.08px;
+    float: right;
+    font-weight:bold;
+}
+.pdfHeading {
+	display: block;
+    padding: 30px;
+    background:url("../img/backgroundHeading.png");
+    color: #fff;
+}
+.contact-info td
+{
+	font: 16px/20px  Arial, sans-serif ;
+	font-weight: bold;
+	
+	
+}
+.pageHeader
+{
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 20px 0;
+	font-size:14px;
+	
+}
+.secPPTPA .pptpaTable, .secRPC .rpcTable
+{
+	font-size: 11px;
+	color:#000;
+    font-family: "AvenirNextLTW01-Condens 721299", Arial, sans-serif;
+    margin: 20px 0px;
+    padding-left: 10px;
+   float: left;
+   width: 30%;
+}
+.secPPTPA .pptpaTableData, .secRPC .rpcTableData
+{
+	font-size: 11px;
+	color:#000;
+    font-family: "AvenirNextLTW01-Condens 721299", Arial, sans-serif;
+    margin: 20px 0px;
+   float: left;
+    width: 10%;
+}
+.secPPTPA .pptpaTable div, .secPPTPA .pptpaTableData div, .secRPC .pptpaTable div
+{
+	padding-left: 10px;
+}
+.font-bold
+{
+	font-weight: 800;
+}
+.bgColorBlue
+{
+	background-color: #ccebf9;
+}
+.bgColorGray
+{
+	background-color: #ccc;
+}
+.bottom_Border
+{
+	border-bottom: 1px solid #000;
+}
+.sectionHeader
+{
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	font: 12px Arial, sans-serif;
+}
+ul.num 
+{
+	margin-left: 20px;
+}
+ul.num li
+{
+	list-style-type: decimal;
+}
+.secRPC .pageHeader p
+{
+	font-size: 12px;
+	color:#000;
+    font-family: Arial, sans-serif;
+    margin: 20px 0px;
+    padding-left: 10px;
+}
+
+
+
+
+
