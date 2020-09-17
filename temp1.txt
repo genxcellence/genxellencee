@@ -1,0 +1,114 @@
+   public void getAllProjectSummary(Project prj,List<Issue> issuesList) throws URISyntaxException {
+			List<ProjectSummary> prjSummary = new ArrayList<ProjectSummary>();
+			List<Projects> allProjects= h2DataServiceImpl.getProjects();
+			Map<String,ProjectSummary> prjSummaryMap=new HashMap<String, ProjectSummary>();
+			for(Projects projects : allProjects) {
+				JiraRestClient jiraRestClient = jiraWebClient.getJiraRestClient();
+				ProjectRestClient projectRestClient = jiraRestClient.getProjectClient();
+				SearchRestClient searchRestClient = jiraRestClient.getSearchClient();
+
+				System.out.println("ProjectInfoService.getProjectDetails Project Key: " + projects.getProjectKey());
+				String projectKey = projects.getProjectKey();
+				URI uriBase = new URI(releaseUrl + "/" + projectKey);
+
+				projectKey = projectKey.toUpperCase();
+				// Get issues from jira
+				SearchResult issueSearch =
+						searchRestClient
+								.searchJql(
+										"project = " + projectKey + " order by created DESC")
+								.claim();
+
+				List<Issue> issues = (List<Issue>) issueSearch.getIssues();
+			for(String summaryLabel : LabelConstants.SUMMARY_STATUS_LIST) {
+				switch(summaryLabel) {
+				case LabelConstants.IN_PROGRESS:
+					List<Issue> inProgressIssues= issues.stream().filter(issue-> (issue.getStatus().getName().equalsIgnoreCase(summaryLabel)|| issue.getStatus().getName().equalsIgnoreCase("Build") || issue.getStatus().getName().equalsIgnoreCase("Analysis") || issue.getStatus().getName().equalsIgnoreCase("Design"))).collect(Collectors.toList());
+					if(prjSummaryMap.containsKey(LabelConstants.IN_PROGRESS)) {
+						ProjectSummary prjSummaryObj = prjSummaryMap.get(LabelConstants.IN_PROGRESS);
+						prjSummaryObj.setCount(prjSummaryObj.getCount()+(long)inProgressIssues.size());
+						prjSummaryObj.setPriority(setProjectPriorityNew(summaryLabel,inProgressIssues,prjSummaryObj));
+						prjSummaryMap.put(LabelConstants.IN_PROGRESS, prjSummaryObj);
+					}else {
+						ProjectSummary prjSummaryObj = new ProjectSummary();
+						if(inProgressIssues.size() > 0) 
+							prjSummaryObj.setCount((long)inProgressIssues.size());
+						else
+							prjSummaryObj.setCount(0L);
+							prjSummaryObj.setLabel_name("In_Progress");
+							prjSummaryObj.setPriority(setProjectPriority(summaryLabel,inProgressIssues));
+							prjSummaryMap.put(LabelConstants.IN_PROGRESS, prjSummaryObj);
+					}
+					//prjSummary.add(prjSummaryObj);
+					break;
+				case LabelConstants.BACKLOG:
+					List<Issue> prjSummaryBacklogObjList= issues.stream().filter(issue-> (issue.getStatus().getName().equalsIgnoreCase(summaryLabel))).collect(Collectors.toList());
+					if(prjSummaryMap.containsKey(LabelConstants.BACKLOG)) {
+						ProjectSummary prjSummaryBackLogObj = prjSummaryMap.get(LabelConstants.BACKLOG);
+						prjSummaryBackLogObj.setCount(prjSummaryBackLogObj.getCount()+(long)prjSummaryBacklogObjList.size());
+						prjSummaryBackLogObj.setPriority(setProjectPriorityNew(summaryLabel,prjSummaryBacklogObjList,prjSummaryBackLogObj));
+						prjSummaryMap.put(LabelConstants.BACKLOG, prjSummaryBackLogObj);
+					}else {
+						ProjectSummary prjSummaryBackLogObj = new ProjectSummary();
+						if(prjSummaryBacklogObjList.size() > 0)
+							prjSummaryBackLogObj.setCount((long)prjSummaryBacklogObjList.size());
+						else
+							prjSummaryBackLogObj.setCount(0L);
+						prjSummaryBackLogObj.setLabel_name("Backlog");
+						prjSummaryBackLogObj.setPriority(setProjectPriority(summaryLabel,prjSummaryBacklogObjList));
+						prjSummaryMap.put(LabelConstants.BACKLOG, prjSummaryBackLogObj);
+					}
+					
+					break;
+				case LabelConstants.IN_TEST:
+					List<Issue> prjSummaryBacklogObjInTestList= issues.stream().filter(issue-> (issue.getStatus().getName().equalsIgnoreCase(summaryLabel) || issue.getStatus().getName().equalsIgnoreCase("In QA") || issue.getStatus().getName().equalsIgnoreCase("SIT") || issue.getStatus().getName().equalsIgnoreCase("Business Validation"))).collect(Collectors.toList());
+					if(prjSummaryMap.containsKey(LabelConstants.IN_TEST)) {
+						ProjectSummary prjSummaryInTestObj = prjSummaryMap.get(LabelConstants.BACKLOG);
+						prjSummaryInTestObj.setCount(prjSummaryInTestObj.getCount()+(long)prjSummaryBacklogObjInTestList.size());
+						prjSummaryInTestObj.setPriority(setProjectPriorityNew(summaryLabel,prjSummaryBacklogObjInTestList,prjSummaryInTestObj));
+						prjSummaryMap.put(LabelConstants.IN_TEST, prjSummaryInTestObj);
+						
+					}else {
+						ProjectSummary prjSummaryInTestObj = new ProjectSummary();
+						if(prjSummaryBacklogObjInTestList.size() > 0)
+							prjSummaryInTestObj.setCount((long)prjSummaryBacklogObjInTestList.size());
+						else
+						prjSummaryInTestObj.setCount(0L);
+						prjSummaryInTestObj.setLabel_name("In_Test");
+						prjSummaryInTestObj.setPriority(setProjectPriority(summaryLabel,prjSummaryBacklogObjInTestList));
+						prjSummaryMap.put(LabelConstants.IN_TEST, prjSummaryInTestObj);
+					}
+					
+					break;
+				case LabelConstants.COMPLETED:
+					List<Issue> prjSummaryBacklogObjCompletedList= issues.stream().filter(issue-> (issue.getStatus().getName().equalsIgnoreCase(summaryLabel) || issue.getStatus().getName().equalsIgnoreCase("Closed") || issue.getStatus().getName().equalsIgnoreCase("Done") || issue.getStatus().getName().equalsIgnoreCase("Approved") )).collect(Collectors.toList());
+					
+					if(prjSummaryMap.containsKey(LabelConstants.COMPLETED)) {
+						ProjectSummary prjSummaryComptObj = prjSummaryMap.get(LabelConstants.COMPLETED);
+						prjSummaryComptObj.setCount(prjSummaryComptObj.getCount()+(long)prjSummaryBacklogObjCompletedList.size());
+						prjSummaryComptObj.setPriority(setProjectPriorityNew(summaryLabel,prjSummaryBacklogObjCompletedList,prjSummaryComptObj));
+						prjSummaryMap.put(LabelConstants.COMPLETED, prjSummaryComptObj);
+						
+					}else {
+						ProjectSummary prjSummaryComptObj = new ProjectSummary();
+						if(prjSummaryBacklogObjCompletedList.size() > 0)
+							prjSummaryComptObj.setCount((long)prjSummaryBacklogObjCompletedList.size());
+						else
+							prjSummaryComptObj.setCount(0L);
+						prjSummaryComptObj.setLabel_name("Completed");
+						prjSummaryComptObj.setPriority(setProjectPriority(summaryLabel,prjSummaryBacklogObjCompletedList));
+						prjSummaryMap.put(LabelConstants.COMPLETED, prjSummaryComptObj);
+					}
+					
+					break;
+				}
+			}
+			List<ProjectSummary> prjSumaryList= new ArrayList<>();
+			prjSumaryList.add(prjSummaryMap.get(LabelConstants.IN_PROGRESS));
+			prjSumaryList.add(prjSummaryMap.get(LabelConstants.BACKLOG));
+			prjSumaryList.add(prjSummaryMap.get(LabelConstants.IN_TEST));
+			prjSumaryList.add(prjSummaryMap.get(LabelConstants.COMPLETED));
+			prj.setProject_summary(prjSumaryList);
+			}
+			
+		}

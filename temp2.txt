@@ -1,0 +1,12 @@
+   public List<PriorityResponse> setProjectPriorityNew(String statusName,List<Issue> issues,ProjectSummary prjSumary) {
+			
+			List<Issue> critical = issues.stream().filter(issue-> (issue.getPriority().getName().equalsIgnoreCase("Highest") || issue.getPriority().getName().equalsIgnoreCase("Trivial") || issue.getPriority().getName().equalsIgnoreCase("Critical") || issue.getPriority().getName().equalsIgnoreCase("Emergency") || issue.getPriority().getName().equalsIgnoreCase("Blocker"))).collect(Collectors.toList());
+			List<Issue> high = issues.stream().filter(issue-> (issue.getPriority().getName().equalsIgnoreCase("high") || issue.getPriority().getName().equalsIgnoreCase("Major"))).collect(Collectors.toList());
+			List<Issue> meduim = issues.stream().filter(issue-> (issue.getPriority().getName().equalsIgnoreCase("Medium") || issue.getPriority().getName().equalsIgnoreCase("Minor"))).collect(Collectors.toList());
+			List<Issue> low = issues.stream().filter(issue-> (issue.getPriority().getName().equalsIgnoreCase("Low") || issue.getPriority().getName().equalsIgnoreCase("Lowest") || issue.getPriority().getName().equalsIgnoreCase("Discretionary"))).collect(Collectors.toList());
+			prjSumary.getPriority().get(0).setCount(prjSumary.getPriority().get(0).getCount() + critical.size());
+			prjSumary.getPriority().get(1).setCount(prjSumary.getPriority().get(1).getCount() + high.size());
+			prjSumary.getPriority().get(2).setCount(prjSumary.getPriority().get(2).getCount() + meduim.size());
+			prjSumary.getPriority().get(3).setCount(prjSumary.getPriority().get(3).getCount() + low.size());
+			return prjSumary.getPriority();
+		}
