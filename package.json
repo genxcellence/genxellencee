@@ -15,6 +15,6 @@
     "https": "^1.0.0",
     "sticky-session": "^1.1.2",
     "winston": "^2.4.0",
-    "winston-daily-rotate-file": "^1.7.0"
+    "winston-daily-rotate-file": "^4.7.1"
   }
 }
